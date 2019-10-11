@@ -8,7 +8,12 @@ class Post < ActiveRecord::Base
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute| 
       category = Category.find_or_create_by(category_attribute)
-      self.categories << category 
+      #self.categories << category 
+      #above line is inefficient because it returns all the categories
+      self.post_categories.build(:category => category)
+      #instantiating an instance of the join model 
+      #which is already associated to the post and 
+      #passing in the category
     end 
   end 
 
