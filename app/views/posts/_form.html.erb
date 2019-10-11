@@ -9,7 +9,7 @@
   <br>
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
   <br>
-  <%= f.fields_for :categories, @post.categories.build do |categories_fields|%>
+  <%= f.fields_for :categories do |categories_fields|%>
       <%= categories_fields.label :name %>
       <%= categories_fields.text_field :name %>
     <% end %>
